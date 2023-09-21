@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite"
 import { FC } from "react"
 import { localized } from "../common/localize/localizedString"
-import { useStores } from "../main/hooks/useStores"
+import { useStores } from "../signal/hooks/useStores"
 
 export interface LocalizedProps {
   children: string

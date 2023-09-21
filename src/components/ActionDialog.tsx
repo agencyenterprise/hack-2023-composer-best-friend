@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { DialogContext, DialogProps } from "../main/hooks/useDialog"
+import { DialogContext, DialogProps } from "../signal/hooks/useDialog"
 import { Button } from "./Button"
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "./Dialog"
 

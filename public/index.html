@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -47,7 +47,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
+    <!-- <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=UA-179088031-1"
     ></script>
@@ -59,13 +59,25 @@
       gtag("js", new Date())
 
       gtag("config", "UA-179088031-1")
+    </script> -->
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js", {
+            scope: "/",
+          })
+          .then(() => console.log("service worker loaded successfully"))
+          .catch((e) => console.error(e))
+      }
     </script>
 
     <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/carbon.css" />
   </head>
   <body>
-    <header>
+    <div id="root"></div>
+    <!-- <header>
       <div class="content">
         <a href="/" id="title"><img src="logo-white.svg" /></a>
         <a href="https://github.com/ryohey/signal/" id="github-link">
@@ -244,6 +256,6 @@
           >
         </div>
       </div>
-    </section>
+    </section> -->
   </body>
 </html>

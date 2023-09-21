@@ -10,7 +10,7 @@ import {
 } from "mobx"
 import { createModelSchema, list, object, primitive } from "serializr"
 // import { FirestoreSong, FirestoreSongData } from "../../firebase/song"
-import { TIME_BASE } from "../../main/Constants"
+import { TIME_BASE } from "../../signal/Constants"
 import { isNotUndefined } from "../helpers/array"
 import { Measure } from "../measure/Measure"
 import { getMeasuresFromConductorTrack } from "../measure/MeasureList"

@@ -1,5 +1,5 @@
 import { FC, useContext, useState } from "react"
-import { PromptContext, PromptProps } from "../main/hooks/usePrompt"
+import { PromptContext, PromptProps } from "../signal/hooks/usePrompt"
 import { Button } from "./Button"
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "./Dialog"
 import { TextField } from "./TextField"

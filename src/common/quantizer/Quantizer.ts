@@ -1,4 +1,4 @@
-import { SongStore } from "../../main/stores/SongStore"
+import { SongStore } from "../../signal/stores/SongStore"
 import { getMeasureStart } from "../song/selector"
 
 export default class Quantizer {

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { FC } from "react"
 // import { auth } from "../../firebase/firebase"
-import { UserButtonContent } from "../../main/components/Navigation/UserButtonContent"
+import { UserButtonContent } from "../../signal/components/Navigation/UserButtonContent"
 import { useStores } from "../hooks/useStores"
 
 const Container = styled.div`

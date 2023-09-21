@@ -1,6 +1,6 @@
 import Player from "../../common/player"
-import { SoundFontSynth } from "../../main/services/SoundFontSynth"
-import { AuthStore } from "../../main/stores/AuthStore"
+import { SoundFontSynth } from "../../signal/services/SoundFontSynth"
+import { AuthStore } from "../../signal/stores/AuthStore"
 import { CommunitySongStore } from "./CommunitySongStore"
 import { SongStore } from "./SongStore"
 

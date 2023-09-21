@@ -2,7 +2,7 @@
 // import { Integrations } from "@sentry/tracing"
 import { configure } from "mobx"
 import { createRoot } from "react-dom/client"
-import { App } from "./components/App/App"
+import { App } from "./App"
 
 // Sentry.init({
 //   dsn: process.env.SENTRY_DSN,

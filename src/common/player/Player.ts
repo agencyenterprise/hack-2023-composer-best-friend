@@ -2,8 +2,8 @@ import range from "lodash/range"
 import throttle from "lodash/throttle"
 import { AnyEvent, MIDIControlEvents } from "midifile-ts"
 import { computed, makeObservable, observable } from "mobx"
-import { SendableEvent, SynthOutput } from "../../main/services/SynthOutput"
-import { SongStore } from "../../main/stores/SongStore"
+import { SendableEvent, SynthOutput } from "../../signal/services/SynthOutput"
+import { SongStore } from "../../signal/stores/SongStore"
 import { filterEventsWithRange } from "../helpers/filterEvents"
 import { Beat, createBeatsInRange } from "../helpers/mapBeats"
 import {
@@ -15,7 +15,7 @@ import { getStatusEvents } from "../track/selector"
 import { ITrackMute } from "../trackMute/ITrackMute"
 import { DistributiveOmit } from "../types"
 import EventScheduler from "./EventScheduler"
-import { convertTrackEvents, PlayerEvent } from "./PlayerEvent"
+import { PlayerEvent, convertTrackEvents } from "./PlayerEvent"
 
 export interface LoopSetting {
   begin: number

@@ -5,9 +5,9 @@ const webpack = require("webpack")
 module.exports = {
   context: __dirname,
   entry: {
-    browserMain: "./src/main/index.tsx",
-    browserLanding: "./src/landing/index.ts",
-    browserCommunity: "./src/community/index.tsx",
+    browserMain: "./src/index.tsx",
+    // browserLanding: "./src/landing/index.ts",
+    // browserCommunity: "./src/community/index.tsx",
   },
   output: {
     filename: "[name]-[chunkhash].js",
@@ -31,23 +31,23 @@ module.exports = {
       VERCEL_GIT_COMMIT_SHA: null,
       SENTRY_DSN: null,
     }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      filename: "edit.html",
-      chunks: ["browserMain"],
-      template: path.join(__dirname, "public", "edit.html"),
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   filename: "edit.html",
+    //   chunks: ["browserMain"],
+    //   template: path.join(__dirname, "public", "edit.html"),
+    // }),
     new HtmlWebpackPlugin({
       inject: true,
       filename: "index.html",
-      chunks: ["browserLanding"],
+      chunks: ["browserMain"],
       template: path.join(__dirname, "public", "index.html"),
     }),
-    new HtmlWebpackPlugin({
-      inject: true,
-      filename: "community.html",
-      chunks: ["browserCommunity"],
-      template: path.join(__dirname, "public", "community.html"),
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   filename: "community.html",
+    //   chunks: ["browserCommunity"],
+    //   template: path.join(__dirname, "public", "community.html"),
+    // }),
   ],
 }

@@ -3,8 +3,8 @@ import SkipNext from "mdi-react/SkipNextIcon"
 import SkipPrevious from "mdi-react/SkipPreviousIcon"
 import { FC } from "react"
 import { Slider } from "../../components/Slider"
-import { CircleButton } from "../../main/components/TransportPanel/CircleButton"
-import { PlayButton } from "../../main/components/TransportPanel/PlayButton"
+import { CircleButton } from "../../signal/components/TransportPanel/CircleButton"
+import { PlayButton } from "../../signal/components/TransportPanel/PlayButton"
 import { BottomPlayerSong } from "./BottomPlayerSong"
 
 const Wrapper = styled.div`
