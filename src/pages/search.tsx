@@ -1,12 +1,12 @@
-import { CSSProperties } from 'react';
+import { CSSProperties } from "react"
 
-import Color from 'color';
-import { Link } from 'react-router-dom';
+import Color from "color"
+import { Link } from "react-router-dom"
 
-import { UserButton } from '@clerk/clerk-react';
-import styled from '@emotion/styled';
+import { UserButton } from "@clerk/clerk-react"
+import styled from "@emotion/styled"
 
-import { Search } from '../components/Search';
+import { Search } from "../components/Search"
 
 const Container = styled.div`
   display: flex;
@@ -68,7 +68,7 @@ export const IconStyle: CSSProperties = {
   fill: "currentColor",
 }
 
-export function HomePage() {
+export function SearchPage() {
   return (
     <div>
       <Container>

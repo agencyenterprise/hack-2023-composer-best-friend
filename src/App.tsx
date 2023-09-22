@@ -1,18 +1,14 @@
 // import * as Sentry from "@sentry/react"
 // import { Integrations } from "@sentry/tracing"
 import React from "react"
+import { BrowserRouter, useNavigate } from "react-router-dom"
 
 import { HelmetProvider } from "react-helmet-async"
 
-import {
-  ClerkProvider,
-  RedirectToSignIn,
-  SignedIn,
-  SignedOut,
-} from "@clerk/clerk-react"
+import { ClerkProvider } from "@clerk/clerk-react"
 
 import { MidiProvider } from "./hooks/useMidi"
-import { Routes } from "./routes/router"
+import { AppRoutes } from "./routes/router"
 import { EmotionThemeProvider } from "./signal/components/Theme/EmotionThemeProvider"
 import { GlobalCSS } from "./signal/components/Theme/GlobalCSS"
 import { SignalProvider } from "./signal/hooks"
@@ -30,26 +26,30 @@ if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
 }
 const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY
 
+const InnerApp = () => {
+  const navigate = useNavigate()
+  return (
+    <ClerkProvider publishableKey={clerkPubKey} navigate={(to) => navigate(to)}>
+      <MidiProvider>
+        <SignalProvider>
+          <GlobalCSS />
+          <AppRoutes />
+        </SignalProvider>
+      </MidiProvider>
+    </ClerkProvider>
+  )
+}
+
 export function App() {
   return (
     <React.StrictMode>
-      <ClerkProvider publishableKey={clerkPubKey}>
-        <SignedIn>
-          <EmotionThemeProvider>
-            <HelmetProvider>
-              <MidiProvider>
-                <SignalProvider>
-                  <GlobalCSS />
-                  <Routes />
-                </SignalProvider>
-              </MidiProvider>
-            </HelmetProvider>
-          </EmotionThemeProvider>
-        </SignedIn>
-        <SignedOut>
-          <RedirectToSignIn />
-        </SignedOut>
-      </ClerkProvider>
+      <EmotionThemeProvider>
+        <HelmetProvider>
+          <BrowserRouter>
+            <InnerApp />
+          </BrowserRouter>
+        </HelmetProvider>
+      </EmotionThemeProvider>
     </React.StrictMode>
   )
 }
