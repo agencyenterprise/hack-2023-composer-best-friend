@@ -32,6 +32,11 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf)$/,
         loader: "url-loader",
       },
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, "src"),
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
     ],
   },
   resolve: {
