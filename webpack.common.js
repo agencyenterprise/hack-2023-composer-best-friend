@@ -6,9 +6,13 @@ const envVars =
   process.env.NODE_ENV === "production"
     ? {
         apiUrl: "http://localhost:4000",
+        clerckApiKey:
+          "pk_test_bWlnaHR5LW11c2tveC03Ny5jbGVyay5hY2NvdW50cy5kZXYk",
       }
     : {
         apiUrl: "http://localhost:4000",
+        clerckApiKey:
+          "pk_test_bWlnaHR5LW11c2tveC03Ny5jbGVyay5hY2NvdW50cy5kZXYk",
       }
 
 module.exports = {
@@ -40,6 +44,7 @@ module.exports = {
       VERCEL_GIT_COMMIT_SHA: null,
       SENTRY_DSN: null,
       API_URL: envVars.apiUrl,
+      REACT_APP_CLERK_PUBLISHABLE_KEY: envVars.clerckApiKey,
     }),
     // new HtmlWebpackPlugin({
     //   inject: true,

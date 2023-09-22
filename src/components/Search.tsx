@@ -1,10 +1,10 @@
-import axios from "axios"
 import { useState } from "react"
+
+import axios from "axios"
 
 import { useMidi } from "../hooks/useMidi"
 
 const baseURL = process.env.API_URL
-
 export function Search() {
   const { setMidiFile } = useMidi()
   const [searchValue, setSearchValue] = useState("")
