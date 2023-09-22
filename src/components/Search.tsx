@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react"
 
-import axios from 'axios';
-import Color from 'color';
-import MidiPlayer from 'react-midi-player';
-import { Link } from 'react-router-dom';
+import axios from "axios"
+import Color from "color"
+import MidiPlayer from "react-midi-player"
+import { Link } from "react-router-dom"
 
-import { useSession } from '@clerk/clerk-react';
-import styled from '@emotion/styled';
+import { useSession } from "@clerk/clerk-react"
+import styled from "@emotion/styled"
 
-import { useMidi } from '../hooks/useMidi';
+import { useMidi } from "../hooks/useMidi"
 
 const Content = styled.div`
   position: absolute;
@@ -26,6 +26,7 @@ const Input = styled.input`
   padding: 6px 15px;
   font-size: 18px;
   margin-bottom: 20px;
+  color: black;
 `
 
 const RowContainer = styled.div`

@@ -29,7 +29,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf)$/,
+        test: /\.(png|jpg|jpeg|gif|woff|woff2|eot|ttf|svg)$/,
         loader: "url-loader",
       },
       {
