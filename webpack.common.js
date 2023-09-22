@@ -5,7 +5,7 @@ const webpack = require("webpack")
 const envVars =
   process.env.NODE_ENV === "production"
     ? {
-        apiUrl: "http://localhost:4000",
+        apiUrl: "https://api.composerpal.com",
         clerckApiKey:
           "pk_test_bWlnaHR5LW11c2tveC03Ny5jbGVyay5hY2NvdW50cy5kZXYk",
       }
