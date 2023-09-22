@@ -1,20 +1,17 @@
 import styled from "@emotion/styled"
 import Color from "color"
-import Forum from "mdi-react/ForumIcon"
 import Help from "mdi-react/HelpCircleIcon"
 import Settings from "mdi-react/SettingsIcon"
 import { observer } from "mobx-react-lite"
 import { CSSProperties, FC, useCallback } from "react"
+import { Link } from "react-router-dom"
 import { envString } from "../../../common/localize/envString"
 import { Localized } from "../../../components/Localized"
 import { Tooltip } from "../../../components/Tooltip"
 import { useStores } from "../../hooks/useStores"
-import ArrangeIcon from "../../images/icons/arrange.svg"
 import PianoIcon from "../../images/icons/piano.svg"
 import TempoIcon from "../../images/icons/tempo.svg"
 import Logo from "../../images/logo-circle.svg"
-import { FileMenuButton } from "./FileMenuButton"
-import { UserButton } from "./UserButton"
 
 const BannerContainer = styled.div`
   background: ${({ theme }) => theme.themeColor};
@@ -95,7 +92,7 @@ export const Navigation: FC = observer(() => {
 
   return (
     <Container>
-      <FileMenuButton />
+      {/* <FileMenuButton /> */}
 
       <Tooltip
         title={
@@ -117,7 +114,7 @@ export const Navigation: FC = observer(() => {
         </Tab>
       </Tooltip>
 
-      <Tooltip
+      {/* <Tooltip
         title={
           <>
             <Localized default="Switch Tab">switch-tab</Localized> [
@@ -135,7 +132,7 @@ export const Navigation: FC = observer(() => {
             <Localized default="Arrange">arrange</Localized>
           </TabTitle>
         </Tab>
-      </Tooltip>
+      </Tooltip> */}
 
       <Tooltip
         title={
@@ -157,8 +154,6 @@ export const Navigation: FC = observer(() => {
         </Tab>
       </Tooltip>
 
-      <FlexibleSpacer />
-
       <Tab
         onClick={useCallback(
           () => (rootViewStore.openSettingDialog = true),
@@ -178,16 +173,25 @@ export const Navigation: FC = observer(() => {
         </TabTitle>
       </Tab>
 
+      <FlexibleSpacer />
+
       <Tab>
+        {/* <Help style={IconStyle} /> */}
+        <Link to="https://ae.studio" target="_blank">
+          <TabTitle>Made with ❤️ by AE Studio</TabTitle>
+        </Link>
+      </Tab>
+
+      {/* <Tab>
         <Forum style={IconStyle} />
         <TabTitle>
           <a href="https://discord.gg/XQxzNdDJse" target="_blank">
             Discord
           </a>
         </TabTitle>
-      </Tab>
+      </Tab> */}
 
-      <UserButton />
+      {/* <UserButton /> */}
     </Container>
   )
 })

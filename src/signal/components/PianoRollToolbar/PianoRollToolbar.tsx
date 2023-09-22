@@ -6,12 +6,9 @@ import InstrumentBrowser from "../InstrumentBrowser/InstrumentBrowser"
 import { AutoScrollButton } from "../Toolbar/AutoScrollButton"
 import QuantizeSelector from "../Toolbar/QuantizeSelector/QuantizeSelector"
 import { Toolbar } from "../Toolbar/Toolbar"
-import { TrackListMenuButton } from "../TrackList/TrackListMenuButton"
 import { EventListButton } from "./EventListButton"
 import { InstrumentButton } from "./InstrumentButton"
 import { PanSlider } from "./PanSlider"
-import { PianoRollToolSelector } from "./PianoRollToolSelector"
-import { TrackNameInput } from "./TrackNameInput"
 import { VolumeSlider } from "./VolumeSlider"
 
 const Spacer = styled.div`
@@ -55,9 +52,9 @@ export const PianoRollToolbar: FC = observer(() => {
 
   return (
     <Toolbar>
-      <TrackListMenuButton />
+      {/* <TrackListMenuButton /> */}
 
-      <TrackNameInput />
+      {/* <TrackNameInput /> */}
 
       <EventListButton />
 
@@ -71,7 +68,7 @@ export const PianoRollToolbar: FC = observer(() => {
 
       <FlexibleSpacer />
 
-      <PianoRollToolSelector />
+      {/* <PianoRollToolSelector /> */}
 
       <QuantizeSelector
         value={quantize}
