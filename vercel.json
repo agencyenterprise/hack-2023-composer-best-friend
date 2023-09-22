@@ -6,7 +6,6 @@
       "config": { "distDir": "dist" }
     }
   ],
-  "cleanUrls": true,
   "routes": [
     {
       "src": "/(.*)",
