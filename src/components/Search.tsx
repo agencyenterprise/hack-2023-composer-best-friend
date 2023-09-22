@@ -52,12 +52,24 @@ interface FileDesc {
   file: File
   buffer: string
 }
+
+const blobToBase64DataURL = (blob: Blob): Promise<string> =>
+  new Promise((resolvePromise) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      if (reader?.result) {
+        resolvePromise((reader.result as any).split(",")[1] as string)
+      }
+    }
+    reader.readAsDataURL(blob)
+  })
+
 const baseURL = process.env.API_URL
 export function Search() {
   const { session } = useSession()
   const { midiFile, setMidiFile } = useMidi()
   const [searchValue, setSearchValue] = useState("")
-  const [arrayBuffers, setArrayBuffers] = useState<FileDesc[]>([])
+  const [files, setFiles] = useState<FileDesc[]>([])
 
   const doRequest = async () => {
     const response = await axios.get(`${baseURL}/search?query=${searchValue}`, {
@@ -69,21 +81,9 @@ export function Search() {
 
     const blob = new Blob([response.data], { type: "audio/midi" })
     const file = new File([blob], "MIDI_sample.mid", { type: "audio/midi" })
-
-    try {
-      // Convert the Blob to a Base64 string
-      const reader = new FileReader()
-      reader.onload = function () {
-        if (reader.result) {
-          const base64String = (reader.result as any).split(",")[1]
-          // Use the base64String as needed
-          setArrayBuffers([{ name: file.name, file, buffer: base64String }])
-        }
-      }
-      reader.readAsDataURL(blob)
-    } catch (error) {
-      console.error("An error occurred:", error)
-    }
+    setFiles([
+      { name: file.name, file, buffer: await blobToBase64DataURL(blob) },
+    ])
   }
 
   return (
@@ -98,13 +98,12 @@ export function Search() {
           }
         }}
       />
-      {arrayBuffers.length > 0 && (
+      {files.length > 0 && (
         <RowContainer>
-          {arrayBuffers.map((fileDesc, index) => {
+          {files.map((fileDesc) => {
             return (
               <Row onClick={() => setMidiFile(fileDesc.file)}>
                 <Link to="/playground">{fileDesc.name}</Link>
-                {/* {fileDesc.buffer} */}
                 <MidiPlayer key="1" data={atob(fileDesc.buffer)} />
               </Row>
             )
