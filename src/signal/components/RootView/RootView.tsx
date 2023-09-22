@@ -1,7 +1,10 @@
 import styled from "@emotion/styled"
 import { observer } from "mobx-react-lite"
 import { FC } from "react"
+import { useNavigate } from "react-router-dom"
+import { useMidi } from "../../../hooks/useMidi"
 import { useStores } from "../../hooks/useStores"
+import { useToast } from "../../hooks/useToast"
 import { ArrangeEditor } from "../ArrangeView/ArrangeEditor"
 import { BuildInfo } from "../BuildInfo"
 import { CloudFileDialog } from "../CloudFileDialog/CloudFileDialog"
@@ -47,26 +50,50 @@ const Routes: FC = observer(() => {
   )
 })
 
-export const RootView: FC = () => (
-  <>
-    <Column>
-      <Navigation />
-      <Container>
-        <Routes />
-        <TransportPanel />
-        <BuildInfo />
-      </Container>
-    </Column>
-    <HelpDialog />
-    <ExportDialog />
-    <ExportProgressDialog />
-    <PianoRollTransposeDialog />
-    <ArrangeTransposeDialog />
-    <Head />
-    <SignInDialog />
-    <CloudFileDialog />
-    <SettingDialog />
-    <ControlSettingDialog />
-    <OnBeforeUnload />
-  </>
-)
+export const RootView: FC = () => {
+  const rootStore = useStores()
+  const toast = useToast()
+  const navigate = useNavigate()
+  const { midiFile } = useMidi()
+
+  // useEffect(() => {
+  //   async function initSong() {
+  //     if (!midiFile) {
+  //       navigate("/")
+  //       return
+  //     }
+
+  //     try {
+  //       loadFile(rootStore, midiFile)
+  //     } catch (e) {
+  //       toast.error("Unable to load the song, please search again.")
+  //     }
+  //   }
+
+  //   initSong()
+  // }, [])
+
+  return (
+    <>
+      <Column>
+        <Navigation />
+        <Container>
+          <Routes />
+          <TransportPanel />
+          <BuildInfo />
+        </Container>
+      </Column>
+      <HelpDialog />
+      <ExportDialog />
+      <ExportProgressDialog />
+      <PianoRollTransposeDialog />
+      <ArrangeTransposeDialog />
+      <Head />
+      <SignInDialog />
+      <CloudFileDialog />
+      <SettingDialog />
+      <ControlSettingDialog />
+      <OnBeforeUnload />
+    </>
+  )
+}

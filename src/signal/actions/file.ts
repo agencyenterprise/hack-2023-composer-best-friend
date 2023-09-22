@@ -40,6 +40,12 @@ export const openFile = async (rootStore: RootStore) => {
   setSong(rootStore)(song)
 }
 
+export const loadFile = async (rootStore: RootStore, file: File) => {
+  const song = await songFromFile(file)
+  song.fileHandle = null
+  setSong(rootStore)(song)
+}
+
 export const songFromFile = async (file: File) => {
   const buf = await file.arrayBuffer()
   const song = songFromMidi(new Uint8Array(buf))

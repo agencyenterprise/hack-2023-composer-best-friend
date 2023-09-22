@@ -20,14 +20,15 @@ module.exports = merge(common, {
         errors: true,
       },
     },
-    historyApiFallback: {
-      rewrites: [
-        {
-          from: /^\/([a-zA-Z_-]+)$/,
-          to: (context) => `/${context.match[1]}.html`,
-        },
-      ],
-    },
+    // historyApiFallback: {
+    //   rewrites: [
+    //     {
+    //       from: /^\/([a-zA-Z_-]+)$/,
+    //       to: (context) => `/${context.match[1]}.html`,
+    //     },
+    //   ],
+    // },
+    historyApiFallback: true,
     open: true,
   },
   module: {
