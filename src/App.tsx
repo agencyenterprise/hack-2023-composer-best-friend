@@ -4,6 +4,7 @@ import React from "react"
 import { HelmetProvider } from "react-helmet-async"
 import { Routes } from "./routes/router"
 
+import { MidiProvider } from "./hooks/useMidi"
 import { EmotionThemeProvider } from "./signal/components/Theme/EmotionThemeProvider"
 import { GlobalCSS } from "./signal/components/Theme/GlobalCSS"
 import { SignalProvider } from "./signal/hooks"
@@ -21,10 +22,12 @@ export function App() {
     <React.StrictMode>
       <EmotionThemeProvider>
         <HelmetProvider>
-          <SignalProvider>
-            <GlobalCSS />
-            <Routes />
-          </SignalProvider>
+          <MidiProvider>
+            <SignalProvider>
+              <GlobalCSS />
+              <Routes />
+            </SignalProvider>
+          </MidiProvider>
         </HelmetProvider>
       </EmotionThemeProvider>
     </React.StrictMode>

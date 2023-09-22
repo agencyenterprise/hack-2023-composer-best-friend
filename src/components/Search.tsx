@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import axios from "axios"
+import { useState } from "react"
 
-import axios from 'axios';
+import { useMidi } from "../hooks/useMidi"
 
 export function Search() {
+  const { setMidiFile } = useMidi()
+
   const [searchValue, setSearchValue] = useState("")
+
   const doRequest = async () => {
-    const midi = await axios.get(
+    const response = await axios.get(
       `http://localhost:4000/search?query=${searchValue}`,
+      {
+        responseType: "arraybuffer",
+      },
     )
-    console.log(midi)
+
+    const blob = new Blob([response.data], { type: "audio/midi" })
+    const file = new File([blob], "MIDI_sample.mid", { type: "audio/midi" })
+    setMidiFile(file)
   }
 
   return (
