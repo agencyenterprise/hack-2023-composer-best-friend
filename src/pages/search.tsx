@@ -79,7 +79,7 @@ export function SearchPage() {
           </Link>
         </Tab>
         <Tab className="flex flex-row gap-10">
-          <UserButton />
+          <UserButton afterSignOutUrl="/sign-in" />
         </Tab>
       </Container>
       <Content>

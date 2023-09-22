@@ -1,5 +1,5 @@
-import { RedirectToSignIn, SignedIn, SignedOut } from "@clerk/clerk-react"
-import { Link, Route, Routes } from "react-router-dom"
+import { SignedIn, SignedOut } from "@clerk/clerk-react"
+import { Link, Navigate, Route, Routes } from "react-router-dom"
 import { SearchPage, SignInPage, SignUpPage, SignalPage } from "../pages"
 
 export const AppRoutes = () => {
@@ -16,7 +16,7 @@ export const AppRoutes = () => {
               <SearchPage />
             </SignedIn>
             <SignedOut>
-              <RedirectToSignIn />
+              <Navigate to="/sign-in" />
             </SignedOut>
           </>
         }
@@ -29,7 +29,7 @@ export const AppRoutes = () => {
               <SignalPage />
             </SignedIn>
             <SignedOut>
-              <RedirectToSignIn />
+              <Navigate to="/sign-in" />
             </SignedOut>
           </>
         }
