@@ -1,8 +1,9 @@
 import styled from "@emotion/styled"
 import { observer } from "mobx-react-lite"
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useMidi } from "../../../hooks/useMidi"
+import { loadFile } from "../../actions/file"
 import { useStores } from "../../hooks/useStores"
 import { useToast } from "../../hooks/useToast"
 import { ArrangeEditor } from "../ArrangeView/ArrangeEditor"
@@ -56,22 +57,22 @@ export const RootView: FC = () => {
   const navigate = useNavigate()
   const { midiFile } = useMidi()
 
-  // useEffect(() => {
-  //   async function initSong() {
-  //     if (!midiFile) {
-  //       navigate("/")
-  //       return
-  //     }
+  useEffect(() => {
+    async function initSong() {
+      if (!midiFile) {
+        navigate("/")
+        return
+      }
 
-  //     try {
-  //       loadFile(rootStore, midiFile)
-  //     } catch (e) {
-  //       toast.error("Unable to load the song, please search again.")
-  //     }
-  //   }
+      try {
+        loadFile(rootStore, midiFile)
+      } catch (e) {
+        toast.error("Unable to load the song, please search again.")
+      }
+    }
 
-  //   initSong()
-  // }, [])
+    initSong()
+  }, [])
 
   return (
     <>
