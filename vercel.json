@@ -6,5 +6,11 @@
       "config": { "distDir": "dist" }
     }
   ],
-  "cleanUrls": true
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
