@@ -2,16 +2,22 @@ import { useState } from "react"
 
 import axios from "axios"
 
+import { useSession } from "@clerk/clerk-react"
+
 import { useMidi } from "../hooks/useMidi"
 
 const baseURL = process.env.API_URL
 export function Search() {
+  const { session } = useSession()
   const { setMidiFile } = useMidi()
   const [searchValue, setSearchValue] = useState("")
 
   const doRequest = async () => {
     const response = await axios.get(`${baseURL}/search?query=${searchValue}`, {
       responseType: "arraybuffer",
+      headers: {
+        Authorization: `Bearer ${await session?.getToken()}`,
+      },
     })
 
     const blob = new Blob([response.data], { type: "audio/midi" })
