@@ -1,17 +1,25 @@
-import styled from "@emotion/styled"
-import Color from "color"
-import Help from "mdi-react/HelpCircleIcon"
-import Settings from "mdi-react/SettingsIcon"
-import { observer } from "mobx-react-lite"
-import { CSSProperties, FC, useCallback } from "react"
-import { Link } from "react-router-dom"
-import { envString } from "../../../common/localize/envString"
-import { Localized } from "../../../components/Localized"
-import { Tooltip } from "../../../components/Tooltip"
-import { useStores } from "../../hooks/useStores"
-import PianoIcon from "../../images/icons/piano.svg"
-import TempoIcon from "../../images/icons/tempo.svg"
-import Logo from "../../images/logo-circle.svg"
+import {
+  CSSProperties,
+  FC,
+  useCallback,
+} from 'react';
+
+import Color from 'color';
+import Help from 'mdi-react/HelpCircleIcon';
+import Settings from 'mdi-react/SettingsIcon';
+import { observer } from 'mobx-react-lite';
+import { Link } from 'react-router-dom';
+
+import { UserButton } from '@clerk/clerk-react';
+import styled from '@emotion/styled';
+
+import { envString } from '../../../common/localize/envString';
+import { Localized } from '../../../components/Localized';
+import { Tooltip } from '../../../components/Tooltip';
+import { useStores } from '../../hooks/useStores';
+import PianoIcon from '../../images/icons/piano.svg';
+import TempoIcon from '../../images/icons/tempo.svg';
+import Logo from '../../images/logo-circle.svg';
 
 const BannerContainer = styled.div`
   background: ${({ theme }) => theme.themeColor};
@@ -182,6 +190,9 @@ export const Navigation: FC = observer(() => {
         </Link>
       </Tab>
 
+      <Tab className="flex flex-row gap-10">
+        <UserButton />
+      </Tab>
       {/* <Tab>
         <Forum style={IconStyle} />
         <TabTitle>
