@@ -10,7 +10,7 @@ export const Head: FC = observer(() => {
     <Helmet>
       <title>
         {song.name.length === 0 ? "New song" : song.name}
-        {song.isSaved ? "" : " *"}
+        {/* {song.isSaved ? "" : " *"} */}
       </title>
     </Helmet>
   )
