@@ -3,22 +3,21 @@ import { useState } from "react"
 
 import { useMidi } from "../hooks/useMidi"
 
+const baseURL = process.env.API_URL
+
 export function Search() {
   const { setMidiFile } = useMidi()
-
   const [searchValue, setSearchValue] = useState("")
 
   const doRequest = async () => {
-    const response = await axios.get(
-      `http://localhost:4000/search?query=${searchValue}`,
-      {
-        responseType: "arraybuffer",
-      },
-    )
+    const response = await axios.get(`${baseURL}/search?query=${searchValue}`, {
+      responseType: "arraybuffer",
+    })
 
     const blob = new Blob([response.data], { type: "audio/midi" })
     const file = new File([blob], "MIDI_sample.mid", { type: "audio/midi" })
     setMidiFile(file)
+    console.log({ file })
   }
 
   return (

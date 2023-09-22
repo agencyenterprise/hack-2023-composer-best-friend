@@ -2,6 +2,15 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const webpack = require("webpack")
 
+const envVars =
+  process.env.NODE_ENV === "production"
+    ? {
+        apiUrl: "http://localhost:4000",
+      }
+    : {
+        apiUrl: "http://localhost:4000",
+      }
+
 module.exports = {
   context: __dirname,
   entry: {
@@ -30,6 +39,7 @@ module.exports = {
       VERCEL_ENV: null,
       VERCEL_GIT_COMMIT_SHA: null,
       SENTRY_DSN: null,
+      API_URL: envVars.apiUrl,
     }),
     // new HtmlWebpackPlugin({
     //   inject: true,
