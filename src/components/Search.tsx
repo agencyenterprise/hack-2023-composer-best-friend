@@ -213,6 +213,24 @@ export function Search() {
           buffer: await blobToBase64DataURL(blob),
           // buffer: data,
         })
+
+        // const byteArray = new Uint8Array(
+        //   atob(response.data[i].join(""))
+        //     .split("")
+        //     .map((char) => char.charCodeAt(0)),
+        // )
+        // const blob = new Blob([byteArray], { type: "audio/midi" })
+        // const file = new File([blob], `midi-sample-${i + 1}.mid`, {
+        //   type: "audio/midi",
+        // })
+
+        // console.log({ file })
+
+        // newFiles.push({
+        //   name: file.name,
+        //   file,
+        //   buffer: await blobToBase64DataURL(blob),
+        // })
       }
 
       setFiles(newFiles)

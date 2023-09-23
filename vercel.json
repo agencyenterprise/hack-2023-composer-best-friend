@@ -6,5 +6,15 @@
       "config": { "distDir": "dist" }
     }
   ],
-  "cleanUrls": true
+  "routes": [
+    {
+      "src": "/(.*).html",
+      "headers": { "cache-control": "s-maxage=0" }
+    },
+    { "handle": "filesystem" },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
+    }
+  ]
 }
