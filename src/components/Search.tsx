@@ -29,6 +29,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
+  width: 100%;
 `
 
 const InputWrapper = styled.div`
@@ -37,11 +38,32 @@ const InputWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+`
+
+const SearchButton = styled(ToolbarButton)`
+  height: 50px;
+  font-size: 1rem;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 850px) {
+    width: 100%;
+  }
 `
 
 const Input = styled.input`
   height: 50px;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   border-radius: 4px;
   padding: 6px 15px;
   font-size: 18px;
@@ -56,6 +78,7 @@ const RowContainer = styled.div`
   flex-direction: column;
   overflow-y: scroll;
   max-height: 300px;
+  width: 100%;
 `
 
 const Row = styled.div`
@@ -143,20 +166,6 @@ const blobToBase64DataURL = (blob: Blob): Promise<string> =>
 
 const baseURL = process.env.API_URL
 
-function dataURLtoFile(dataurl: string, filename: string) {
-  const arr = dataurl.split(",")
-  /* @ts-ignore */
-  const mime = arr[0].match(/:(.*?);/)[1]
-  const bstr = atob(arr[arr.length - 1])
-  let n = bstr.length
-  const u8arr = new Uint8Array(n)
-
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n)
-  }
-  return new File([u8arr], filename, { type: mime })
-}
-
 export function Search() {
   const { session } = useSession()
   const [key, setKey] = useState("")
@@ -175,9 +184,7 @@ export function Search() {
 
       const response = await axios.get(
         `${baseURL}/search?query=${searchValue}`,
-        // `${baseURL}/search?query=${searchValue}&mode=presentation`,
         {
-          // responseType: "arraybuffer",
           headers: {
             Authorization: `Bearer ${await session?.getToken()}`,
           },
@@ -185,22 +192,7 @@ export function Search() {
       )
       const newFiles = []
 
-      console.log(response.data)
-
       for (let i = 0; i < response.data.length; i++) {
-        // // const arrayBuffer = new Uint8Array(response.data[i].data).buffer // Convert array of integers to ArrayBuffer
-        // // const blob = new Blob([arrayBuffer], { type: "audio/midi" })
-        // // const file = new File([blob], `midi-sample-${i + 1}.midi`, {
-        // //   type: "audio/midi",
-        // // })
-
-        // newFiles.push({
-        //   name: `midi-sample-${i + 1}.midi`,
-        //   file: dataURLtoFile(response.data[i], `midi-sample-${i + 1}.midi`),
-        //   buffer: dataUriToBuffer(response.data[i]),
-        //   // buffer: data,
-        // })
-
         const arrayBuffer = new Uint8Array(response.data[i].data).buffer // Convert array of integers to ArrayBuffer
         const blob = new Blob([arrayBuffer], { type: "audio/midi" })
         const file = new File([blob], `midi-sample-${i + 1}.midi`, {
@@ -211,26 +203,7 @@ export function Search() {
           name: file.name,
           file,
           buffer: await blobToBase64DataURL(blob),
-          // buffer: data,
         })
-
-        // const byteArray = new Uint8Array(
-        //   atob(response.data[i].join(""))
-        //     .split("")
-        //     .map((char) => char.charCodeAt(0)),
-        // )
-        // const blob = new Blob([byteArray], { type: "audio/midi" })
-        // const file = new File([blob], `midi-sample-${i + 1}.mid`, {
-        //   type: "audio/midi",
-        // })
-
-        // console.log({ file })
-
-        // newFiles.push({
-        //   name: file.name,
-        //   file,
-        //   buffer: await blobToBase64DataURL(blob),
-        // })
       }
 
       setFiles(newFiles)
@@ -270,21 +243,14 @@ export function Search() {
             }
           }}
         />
-        <ToolbarButton
+        <SearchButton
           type="button"
           onClick={() => doRequest()}
-          style={{
-            height: "50px",
-            fontSize: "1rem",
-            width: "120px",
-            display: "flex",
-            justifyContent: "center",
-          }}
           selected={true}
           disabled={isSearching}
         >
           {isSearching ? "Searching..." : "Search"}
-        </ToolbarButton>
+        </SearchButton>
       </InputWrapper>
 
       {isSearching && (
