@@ -1,25 +1,22 @@
-import {
-  CSSProperties,
-  FC,
-  useCallback,
-} from 'react';
+import { CSSProperties, FC, useCallback } from "react"
 
-import Color from 'color';
-import Help from 'mdi-react/HelpCircleIcon';
-import Settings from 'mdi-react/SettingsIcon';
-import { observer } from 'mobx-react-lite';
-import { Link } from 'react-router-dom';
+import Color from "color"
+import Help from "mdi-react/HelpCircleIcon"
+import Settings from "mdi-react/SettingsIcon"
+import { observer } from "mobx-react-lite"
+import { BiArrowBack } from "react-icons/bi"
+import { Link, useNavigate } from "react-router-dom"
 
-import { UserButton } from '@clerk/clerk-react';
-import styled from '@emotion/styled';
+import { UserButton } from "@clerk/clerk-react"
+import styled from "@emotion/styled"
 
-import { envString } from '../../../common/localize/envString';
-import { Localized } from '../../../components/Localized';
-import { Tooltip } from '../../../components/Tooltip';
-import { useStores } from '../../hooks/useStores';
-import PianoIcon from '../../images/icons/piano.svg';
-import TempoIcon from '../../images/icons/tempo.svg';
-import Logo from '../../images/logo-circle.svg';
+import { envString } from "../../../common/localize/envString"
+import { Localized } from "../../../components/Localized"
+import { Tooltip } from "../../../components/Tooltip"
+import { useStores } from "../../hooks/useStores"
+import PianoIcon from "../../images/icons/piano.svg"
+import TempoIcon from "../../images/icons/tempo.svg"
+import Logo from "../../images/logo-circle.svg"
 
 const BannerContainer = styled.div`
   background: ${({ theme }) => theme.themeColor};
@@ -97,10 +94,16 @@ export const Navigation: FC = observer(() => {
     authStore: { user },
     router,
   } = useStores()
+  const navigate = useNavigate()
 
   return (
     <Container>
       {/* <FileMenuButton /> */}
+
+      <Tab style={{ cursor: "pointer" }} onClick={() => navigate("/search")}>
+        <BiArrowBack size={20} color="white" />
+        <TabTitle>Search again</TabTitle>
+      </Tab>
 
       <Tooltip
         title={

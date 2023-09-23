@@ -24,16 +24,12 @@ async function updateKey(key: string, token: string) {
   )
 }
 const Content = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -150px 0 0 -300px;
   display: flex;
   flex-direction: column;
 }
 `
 const Input = styled.input`
-  height: 40px;
+  height: 50px;
   width: 600px;
   border-radius: 10px;
   padding: 6px 15px;
@@ -41,6 +37,15 @@ const Input = styled.input`
   margin-bottom: 20px;
   color: black;
 `
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`
+
+// const Button = styled.button``
 
 const RowContainer = styled.div`
   gap: 10px;
@@ -131,17 +136,23 @@ export function Search() {
           },
         },
       )
-      const newFiles = [];
+      const newFiles = []
 
       for (let i = 0; i < response.data.length; i++) {
-        const data = response.data[i];
-        const blob = new Blob([data], { type: "audio/midi" });
-        const file = new File([blob], `midi-sample-${i + 1}.mid`, { type: "audio/midi" });
+        const data = response.data[i]
+        const blob = new Blob([data], { type: "audio/midi" })
+        const file = new File([blob], `midi-sample-${i + 1}.mid`, {
+          type: "audio/midi",
+        })
 
-        newFiles.push({ name: file.name, file, buffer: await blobToBase64DataURL(blob) });
+        newFiles.push({
+          name: file.name,
+          file,
+          buffer: await blobToBase64DataURL(blob),
+        })
       }
 
-      setFiles(newFiles);
+      setFiles(newFiles)
     } catch (e: any) {
       setIsOpen(true)
     }
@@ -159,16 +170,19 @@ export function Search() {
 
   return (
     <Content>
-      <Input
-        placeholder="Search for a song"
-        value={searchValue}
-        onChange={(e) => setSearchValue(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            doRequest()
-          }
-        }}
-      />
+      <InputWrapper>
+        <Input
+          placeholder="Search for a song"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              doRequest()
+            }
+          }}
+        />
+        <Button type="button">Search</Button>
+      </InputWrapper>
       {files.length > 0 && (
         <RowContainer>
           {files.map((fileDesc) => {

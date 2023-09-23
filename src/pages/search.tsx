@@ -6,6 +6,8 @@ import { Link } from "react-router-dom"
 import { UserButton } from "@clerk/clerk-react"
 import styled from "@emotion/styled"
 
+import LogoText from "../assets/logo-text.svg"
+
 import { Search } from "../components/Search"
 
 const Container = styled.div`
@@ -18,10 +20,13 @@ const Container = styled.div`
 
 const Content = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: calc(100vh - 3rem);
+  max-height: calc(100vh - 3rem);
   position: relative;
+  padding-top: 10vh;
 `
 
 export const Tab = styled.div`
@@ -83,9 +88,8 @@ export function SearchPage() {
         </Tab>
       </Container>
       <Content>
-        <Content>
-          <Search />
-        </Content>
+        <LogoText />
+        <Search />
       </Content>
     </div>
   )

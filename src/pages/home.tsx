@@ -247,7 +247,9 @@ export function HomePage() {
         <div className="container mt-xl mb-2xl">
           <div className="row mt-xl v-l">
             <div className="column align-left">
-              <div className="muted text-sm">Made with ❤️ by AE Studio</div>
+              <Link to="https://ae.studio" target="_blank">
+                <div className="muted text-sm">Made with ❤️ by AE Studio</div>
+              </Link>
             </div>
           </div>
         </div>
