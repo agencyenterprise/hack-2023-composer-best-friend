@@ -29,7 +29,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  width: 100%;
+  width: 90%;
+  max-width: 700px;
 `
 
 const InputWrapper = styled.div`
@@ -39,7 +40,7 @@ const InputWrapper = styled.div`
   align-items: center;
   gap: 10px;
   width: 90%;
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
 
   @media (max-width: 850px) {
@@ -51,7 +52,7 @@ const InputWrapper = styled.div`
 const SearchButton = styled(ToolbarButton)`
   height: 50px;
   font-size: 1rem;
-  width: 120px;
+  width: 140px;
   display: flex;
   justify-content: center;
 
@@ -208,8 +209,11 @@ export function Search() {
 
       setFiles(newFiles)
     } catch (e: any) {
-      console.log(e)
-      setIsOpen(true)
+      if (e?.response?.data?.error === "Usage limit reached") {
+        setIsOpen(true)
+      } else {
+        alert("Something went wrong, please try again later.")
+      }
     } finally {
       setIsSearching(false)
     }
