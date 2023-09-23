@@ -154,7 +154,7 @@ export function HomePage() {
           <div className="row items-center v-t">
             <div className="column align-left p-2xl">
               <h6 className="max-w-lg">#1 Feature</h6>
-              <h2 className="max-w-lg">
+              <h2 className="max-w-lg" style={{ color: "#4c41cc" }}>
                 Unlock your creative potential with AI-generated music.
               </h2>
               <p className="text-lg">
@@ -176,7 +176,7 @@ export function HomePage() {
           <div className="row reverse items-center v-t">
             <div className="column align-left p-2xl">
               <h6 className="max-w-lg">#2 Feature</h6>
-              <h2 className="max-w-lg">
+              <h2 className="max-w-lg" style={{ color: "#4c41cc" }}>
                 Unlock your musical genius with Composer Pal.
               </h2>
               <p className="text-lg">
@@ -199,7 +199,7 @@ export function HomePage() {
           <div className="row items-center v-t">
             <div className="column align-left p-2xl">
               <h6 className="max-w-lg">#3 Feature</h6>
-              <h2 className="max-w-lg">
+              <h2 className="max-w-lg" style={{ color: "#4c41cc" }}>
                 Unlock your musical potential with genre-specific inspiration.
               </h2>
               <p className="text-lg">
@@ -244,78 +244,10 @@ export function HomePage() {
         </div>
       </div>
       <div className="section pb-2xl-m">
-        <div className="container mt-2xl mb-2xl">
-          <div className="row v-l">
+        <div className="container mt-xl mb-2xl">
+          <div className="row mt-xl v-l">
             <div className="column align-left">
-              <div className="emoji lg">🌎</div>
-              <a href="#" className="u mt-lg">
-                info@email.com
-              </a>
-              <div className="row mt-lg ml-md-n">
-                <a href="#" target="_blank" className="p-md w-inline-block">
-                  <img
-                    src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg"
-                    data-feather="twitter"
-                    alt=""
-                    className="icon"
-                  />
-                </a>
-                <a href="#" target="_blank" className="p-md w-inline-block">
-                  <img
-                    src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg"
-                    data-feather="instagram"
-                    alt=""
-                    className="icon"
-                  />
-                </a>
-                <a href="#" target="_blank" className="p-md w-inline-block">
-                  <img
-                    src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg"
-                    data-feather="linkedin"
-                    alt=""
-                    className="icon"
-                  />
-                </a>
-              </div>
-            </div>
-            <div className="column align-left">
-              <h6 className="max-w-lg mb-xl footer-header">Company</h6>
-              <div>About</div>
-              <div className="mt-md">Customers</div>
-              <div className="mt-md">Jobs</div>
-              <div className="mt-md">Blog</div>
-            </div>
-            <div className="column align-left">
-              <h6 className="max-w-lg mb-xl footer-header">Contact</h6>
-              <div>Support</div>
-              <div className="mt-md">Sales</div>
-            </div>
-            <div className="column align-left">
-              <h6 className="max-w-lg mb-xl footer-header">Resources</h6>
-              <div>Podcast</div>
-              <div className="mt-md">Help Center</div>
-            </div>
-          </div>
-          <div className="border-t mt-xl">
-            <div className="row mt-xl v-l">
-              <div className="column align-left">
-                <div className="muted text-sm">
-                  © No copyright I guess? Do whatever you want with the site
-                </div>
-              </div>
-              <div className="column align-right">
-                <div className="row">
-                  <div className="muted text-sm mr-lg">Dummy links:</div>
-                  <div>
-                    <a href="#">Privacy Policy</a>
-                  </div>
-                  <div>
-                    <a href="#" className="ml-lg">
-                      Terms and Conditions
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <div className="muted text-sm">Made with ❤️ by AE Studio</div>
             </div>
           </div>
         </div>

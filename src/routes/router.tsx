@@ -1,7 +1,12 @@
 import { SignedIn, SignedOut } from "@clerk/clerk-react"
 import { Navigate, Route, Routes } from "react-router-dom"
-import { SearchPage, SignInPage, SignUpPage, SignalPage } from "../pages"
-import { HomePage } from "../pages/home"
+import {
+  HomePage,
+  SearchPage,
+  SignInPage,
+  SignUpPage,
+  SignalPage,
+} from "../pages"
 
 export const AppRoutes = () => {
   return (

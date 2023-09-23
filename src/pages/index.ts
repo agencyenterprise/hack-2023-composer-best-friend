@@ -1,3 +1,4 @@
+export * from "./home"
 export * from "./playground"
 export * from "./search"
 export * from "./sign-in"
