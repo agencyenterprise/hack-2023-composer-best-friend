@@ -88,7 +88,7 @@ export function SearchPage() {
         </Tab>
       </Container>
       <Content>
-        <LogoText />
+        <LogoText style={{ marginBottom: "20px" }} />
         <Search />
       </Content>
     </div>

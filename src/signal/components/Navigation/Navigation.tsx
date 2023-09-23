@@ -13,6 +13,7 @@ import styled from "@emotion/styled"
 import { envString } from "../../../common/localize/envString"
 import { Localized } from "../../../components/Localized"
 import { Tooltip } from "../../../components/Tooltip"
+import { clearFile } from "../../actions/file"
 import { useStores } from "../../hooks/useStores"
 import PianoIcon from "../../images/icons/piano.svg"
 import TempoIcon from "../../images/icons/tempo.svg"
@@ -89,18 +90,25 @@ export const IconStyle: CSSProperties = {
 }
 
 export const Navigation: FC = observer(() => {
+  const rootStore = useStores()
   const {
     rootViewStore,
     authStore: { user },
     router,
-  } = useStores()
+  } = rootStore
   const navigate = useNavigate()
 
   return (
     <Container>
       {/* <FileMenuButton /> */}
 
-      <Tab style={{ cursor: "pointer" }} onClick={() => navigate("/search")}>
+      <Tab
+        style={{ cursor: "pointer" }}
+        onClick={() => {
+          clearFile(rootStore)
+          navigate("/search")
+        }}
+      >
         <BiArrowBack size={20} color="white" />
         <TabTitle>Search again</TabTitle>
       </Tab>
@@ -196,16 +204,6 @@ export const Navigation: FC = observer(() => {
       <Tab className="flex flex-row gap-10">
         <UserButton />
       </Tab>
-      {/* <Tab>
-        <Forum style={IconStyle} />
-        <TabTitle>
-          <a href="https://discord.gg/XQxzNdDJse" target="_blank">
-            Discord
-          </a>
-        </TabTitle>
-      </Tab> */}
-
-      {/* <UserButton /> */}
     </Container>
   )
 })

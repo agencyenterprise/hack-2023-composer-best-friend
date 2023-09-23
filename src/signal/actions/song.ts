@@ -38,6 +38,27 @@ export const setSong = (rootStore: RootStore) => (song: Song) => {
   player.position = 0
 }
 
+export const removeSong = (rootStore: RootStore) => () => {
+  const { pianoRollStore, player, historyStore, arrangeViewStore } = rootStore
+
+  rootStore.song = emptySong()
+  pianoRollStore.setScrollLeftInPixels(0)
+  pianoRollStore.notGhostTracks = new Set()
+  pianoRollStore.showTrackList = true
+  pianoRollStore.selection = null
+  pianoRollStore.selectedNoteIds = []
+  pianoRollStore.selectedTrackId = 0
+
+  arrangeViewStore.selection = null
+  arrangeViewStore.selectedEventIds = []
+
+  historyStore.clear()
+
+  player.stop()
+  player.reset()
+  player.position = 0
+}
+
 export const createSong = (rootStore: RootStore) => () => {
   const store = rootStore
   setSong(store)(emptySong())

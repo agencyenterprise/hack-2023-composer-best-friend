@@ -1,7 +1,7 @@
 import { songFromMidi, songToMidi } from "../../common/midi/midiConversion"
 import { writeFile } from "../services/fs-helper"
 import RootStore from "../stores/RootStore"
-import { setSong } from "./song"
+import { removeSong, setSong } from "./song"
 
 // URL parameter for automation purposes used in scripts/perf/index.js
 // /edit?disableFileSystem=true
@@ -44,6 +44,10 @@ export const loadFile = async (rootStore: RootStore, file: File) => {
   const song = await songFromFile(file)
   song.fileHandle = null
   setSong(rootStore)(song)
+}
+
+export const clearFile = async (rootStore: RootStore) => {
+  removeSong(rootStore)()
 }
 
 export const songFromFile = async (file: File) => {
