@@ -131,12 +131,17 @@ export function Search() {
           },
         },
       )
+      const newFiles = [];
 
-      const blob = new Blob([response.data], { type: "audio/midi" })
-      const file = new File([blob], "MIDI_sample.mid", { type: "audio/midi" })
-      setFiles([
-        { name: file.name, file, buffer: await blobToBase64DataURL(blob) },
-      ])
+      for (let i = 0; i < response.data.length; i++) {
+        const data = response.data[i];
+        const blob = new Blob([data], { type: "audio/midi" });
+        const file = new File([blob], `midi-sample-${i + 1}.mid`, { type: "audio/midi" });
+
+        newFiles.push({ name: file.name, file, buffer: await blobToBase64DataURL(blob) });
+      }
+
+      setFiles(newFiles);
     } catch (e: any) {
       setIsOpen(true)
     }
