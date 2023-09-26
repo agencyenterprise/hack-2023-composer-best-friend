@@ -84,7 +84,7 @@ export function SearchPage() {
       try {
         const token = session?.getToken()
         await axios.post(
-          `${process.env.API_URL}/users/key`,
+          `${process.env.API_URL}/users`,
           { clerkUserId: userId },
           {
             headers: {
