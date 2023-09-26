@@ -1,13 +1,14 @@
-import { CSSProperties } from "react"
+import { CSSProperties, useEffect, useState } from "react"
 
 import Color from "color"
 import { Link } from "react-router-dom"
 
-import { UserButton } from "@clerk/clerk-react"
+import { UserButton, useAuth, useSession } from "@clerk/clerk-react"
 import styled from "@emotion/styled"
 
 import LogoText from "../assets/logo-text.svg"
 
+import axios from "axios"
 import { Search } from "../components/Search"
 
 const Container = styled.div`
@@ -74,6 +75,35 @@ export const IconStyle: CSSProperties = {
 }
 
 export function SearchPage() {
+  const { isLoaded, userId } = useAuth()
+  const { session } = useSession()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    async function checkUser() {
+      try {
+        const token = session?.getToken()
+        await axios.post(
+          `${process.env.API_URL}/users/key`,
+          { clerkUserId: userId },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+      } catch (err) {
+        console.log("Error checking user", err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (isLoaded && userId && session) {
+      checkUser()
+    }
+  }, [isLoaded, userId, session])
+
   return (
     <div>
       <Container>
@@ -89,7 +119,7 @@ export function SearchPage() {
       </Container>
       <Content>
         <LogoText style={{ marginBottom: "20px" }} />
-        <Search />
+        <Search isLoading={true} />
       </Content>
     </div>
   )

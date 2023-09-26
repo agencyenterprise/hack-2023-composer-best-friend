@@ -167,7 +167,11 @@ const blobToBase64DataURL = (blob: Blob): Promise<string> =>
 
 const baseURL = process.env.API_URL
 
-export function Search() {
+interface SearchProps {
+  isLoading?: boolean
+}
+
+export function Search({ isLoading }: SearchProps) {
   const { session } = useSession()
   const [key, setKey] = useState("")
   const { files, setFiles, setMidiFile } = useMidi()
@@ -257,7 +261,17 @@ export function Search() {
         </SearchButton>
       </InputWrapper>
 
-      {isSearching && (
+      {isLoading && (
+        <LoaderWrapper>
+          <p
+            style={{ fontSize: "1rem", textAlign: "center", color: "#9a9a9a" }}
+          >
+            Loading...
+          </p>
+        </LoaderWrapper>
+      )}
+
+      {!isLoading && isSearching && (
         <LoaderWrapper>
           <SearchLoader />
           <p
@@ -268,7 +282,7 @@ export function Search() {
         </LoaderWrapper>
       )}
 
-      {!isSearching && files.length > 0 && (
+      {!isLoading && !isSearching && files.length > 0 && (
         <RowContainer>
           {files.map((fileDesc) => {
             return (
