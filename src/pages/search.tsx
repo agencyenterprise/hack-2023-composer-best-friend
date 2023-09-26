@@ -94,6 +94,7 @@ export function SearchPage() {
         )
       } catch (err) {
         console.log("Error checking user", err)
+        setIsLoading(false)
       } finally {
         setIsLoading(false)
       }
@@ -119,7 +120,7 @@ export function SearchPage() {
       </Container>
       <Content>
         <LogoText style={{ marginBottom: "20px" }} />
-        <Search isLoading={true} />
+        <Search isLoading={isLoading} />
       </Content>
     </div>
   )
