@@ -1,11 +1,9 @@
 // import * as Sentry from "@sentry/react"
 // import { Integrations } from "@sentry/tracing"
-import React from "react"
-import { BrowserRouter, useNavigate } from "react-router-dom"
-
-import { HelmetProvider } from "react-helmet-async"
-
 import { ClerkProvider } from "@clerk/clerk-react"
+import React from "react"
+import { HelmetProvider } from "react-helmet-async"
+import { BrowserRouter, useNavigate } from "react-router-dom"
 
 import { MidiProvider } from "./hooks/useMidi"
 import { AppRoutes } from "./routes/router"

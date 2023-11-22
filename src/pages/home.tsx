@@ -247,10 +247,17 @@ export function HomePage() {
         <div className="container mt-xl mb-2xl">
           <div className="row mt-xl v-l">
             <div className="column align-left">
-              <Link to="https://ae.studio" target="_blank">
+              <Link
+                to="https://ae.studio?utm_source=composerpal.com"
+                target="_blank"
+              >
                 <div className="muted text-sm">Made with ❤️ by AE Studio</div>
               </Link>
             </div>
+
+            <Link to="/who-made-this">
+              <div className="muted text-sm">Who made this?</div>
+            </Link>
           </div>
         </div>
       </div>

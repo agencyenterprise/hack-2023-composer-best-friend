@@ -196,7 +196,7 @@ export const Navigation: FC = observer(() => {
 
       <Tab>
         {/* <Help style={IconStyle} /> */}
-        <Link to="https://ae.studio" target="_blank">
+        <Link to="https://ae.studio?utm_source=composerpal.com" target="_blank">
           <TabTitle>Made with ❤️ by AE Studio</TabTitle>
         </Link>
       </Tab>

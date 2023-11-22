@@ -110,7 +110,10 @@ export function SearchPage() {
       <Container>
         <FlexibleSpacer />
         <Tab className="flex flex-row gap-10">
-          <Link to="https://ae.studio" target="_blank">
+          <Link
+            to="https://ae.studio?utm_source=composerpal.com"
+            target="_blank"
+          >
             <TabTitle>Made with ❤️ by AE Studio</TabTitle>
           </Link>
         </Tab>
