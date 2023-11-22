@@ -145,6 +145,12 @@ export function HomePage() {
                 starting out, Composer Pal will be your ultimate creative
                 companion.
               </p>
+              <Link
+                to="/pricing"
+                className="mt-6 button xl main mt-2xl w-button"
+              >
+                Unlock the perfect plan for You
+              </Link>
             </div>
           </div>
         </div>
