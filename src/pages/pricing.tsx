@@ -21,10 +21,10 @@ const CheckIcon = () => {
 const formLink = "https://form.typeform.com/to/PJAvghq3"
 
 const freeTierFeatures = [
-  "Get hardware recommendations",
-  "Quickly get a list of the best your money can buy",
-  "It’s like magic",
-  "Really, it’s just a very powerful simple tool",
+  "Unleash your creativivity",
+  "Unlock your musical potential with genre-specific inspiration",
+  "Compose music with AI",
+  "Free forever",
 ]
 
 const FreeTier = () => {
