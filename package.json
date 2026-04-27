@@ -71,7 +71,7 @@
     "@babel/preset-react": "7.22.15",
     "@babel/preset-typescript": "7.22.15",
     "@emotion/babel-plugin": "^11.11.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.17",
     "@sentry/webpack-plugin": "^2.7.1",
     "@types/color": "3.0.4",
     "@types/jest": "29.5.5",
@@ -107,7 +107,7 @@
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "4.9.1",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
+    "webpack-dev-server": "^5.2.3",
     "webpack-merge": "5.9.0"
   }
 }
